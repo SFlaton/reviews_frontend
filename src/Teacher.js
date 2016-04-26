@@ -1,6 +1,7 @@
 import React from 'react';
 import jquery from 'jquery';
 import Form from './Form';
+import Review from './Review';
 
 class Teacher extends React.Component {
     constructor(props){
@@ -13,7 +14,7 @@ class Teacher extends React.Component {
 
     componentDidMount(){
         this.setState({
-          teachers: [{name: 'Wouter', nickname: 'Foxycoder', subject: 'anything concerning rails', school: 'Codaisseur'}, {name: 'Andrew', nickname: 'unknown', subject: 'advisor', school: 'Codaisseur'}],
+          teachers: [{id: 1, name: 'Wouter', nickname: 'Foxycoder', subject: 'anything concerning rails', school: 'Codaisseur'}, {id: 2, name: 'Andrew', nickname: 'unknown', subject: 'advisor', school: 'Codaisseur'}],
         });
     }
     componentDidMount() {
@@ -38,6 +39,7 @@ class Teacher extends React.Component {
           <ul>
             {teachers}
             <Form onAddTeacher={this.retreiveTeacher.bind(this)} />
+            <Review />
           </ul>
         )
     }
