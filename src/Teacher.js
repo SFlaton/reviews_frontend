@@ -1,4 +1,6 @@
 import React from 'react';
+import jquery from 'jquery';
+import Form from './Form';
 
 class Teacher extends React.Component {
     constructor(props){
@@ -14,6 +16,18 @@ class Teacher extends React.Component {
           teachers: [{name: 'Wouter', nickname: 'Foxycoder', subject: 'anything concerning rails', school: 'Codaisseur'}, {name: 'Andrew', nickname: 'unknown', subject: 'advisor', school: 'Codaisseur'}],
         });
     }
+    componentDidMount() {
+        this.retreiveTeachers();
+      }
+
+      retreiveTeacher(){
+        var app = this;
+        jQuery.get("http://localhost:3000/courses.json", (function(data){
+          app.setState({
+            courses: data.teacher,
+          });
+        }).bind(this));
+      }
 
     render() {
         let teachers = this.state.teachers.map(function(teacher){
@@ -23,6 +37,7 @@ class Teacher extends React.Component {
         return (
           <ul>
             {teachers}
+            <Form onAddTeacher={this.retreiveTeacher.bind(this)} />
           </ul>
         )
     }
