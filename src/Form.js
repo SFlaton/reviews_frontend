@@ -1,5 +1,5 @@
 import React from 'react';
-import jquery from 'jquery';
+import jQuery from 'jquery';
 
 class Form extends React.Component{
   constructor(){
